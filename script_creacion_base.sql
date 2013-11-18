@@ -69,8 +69,8 @@ GO
 
 CREATE TABLE [DDS].[Festival](
 	[id_festival] [int] IDENTITY(1,1) NOT NULL,
-	[nombre] [nvarchar](255) NOT NULL,
-	[predio] [nvarchar](255) NOT NULL,
+	[nombre] [varchar](255) NOT NULL,
+	[predio] [varchar](255) NOT NULL,
 	[vigente] [bit] NOT NULL,
  CONSTRAINT [PK_Festival] PRIMARY KEY CLUSTERED 
 (
@@ -276,7 +276,7 @@ GO
 
 
 
---D = Disponible, V = Vendida
+--D = Disponible, O = Ocupada
 INSERT INTO DDS.Butaca (id_noche, estado, numero, sector, precio)
 VALUES (1, 'D', 1, 'Vip', 1000.0)
 INSERT INTO DDS.Butaca (id_noche, estado, numero, sector, precio)
@@ -518,7 +518,7 @@ GO
 
 INSERT INTO DDS.Entrada(id_butaca, anticipada, precio_final, fecha_venta)
 (
-	SELECT but.id_butaca, 1, (but.precio * 100) / noc.descuento as precio_final, noc.fecha_fin_anticipada
+	SELECT but.id_butaca, 1, but.precio - ( (but.precio * noc.descuento) / 100 ) as precio_final, noc.fecha_fin_anticipada
 	FROM DDS.Butaca but
 	INNER JOIN DDS.Noche noc
 		ON noc.id_noche = but.id_noche
