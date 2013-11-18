@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -67,8 +68,7 @@ public class Butaca implements Serializable {
 	/**
 	 * La entrada asociada a la butaca (en caso de haberla)
 	 */
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_butaca")
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="butaca")
 	private Entrada entrada;
 
 	/**
