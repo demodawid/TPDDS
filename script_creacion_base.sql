@@ -484,7 +484,7 @@ VALUES (9, 'D', 10, 'Platea', 500.0)
 INSERT INTO DDS.Butaca (id_noche, estado, numero, sector, precio)
 VALUES (9, 'O', 11, 'Platea', 500.0)
 
--------------------------------------------------Entrada-------------------------------------
+-------------------------------------------------Entrada--------------------------------------------------
 USE [DDS2013]
 GO
 
@@ -516,4 +516,11 @@ GO
 ALTER TABLE [DDS].[Entrada] CHECK CONSTRAINT [FK_Entrada_Butaca]
 GO
 
-
+INSERT INTO DDS.Entrada(id_butaca, anticipada, precio_final, fecha_venta)
+(
+	SELECT but.id_butaca, 1, (but.precio * 100) / noc.descuento as precio_final, noc.fecha_fin_anticipada
+	FROM DDS.Butaca but
+	INNER JOIN DDS.Noche noc
+		ON noc.id_noche = but.id_noche
+	WHERE but.estado = 'O'
+)
