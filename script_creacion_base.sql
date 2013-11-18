@@ -241,8 +241,10 @@ USE [DDS2013]
 GO
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
 SET ANSI_PADDING ON
 GO
 
@@ -252,13 +254,27 @@ CREATE TABLE [DDS].[Butaca](
 	[estado] [char](1) NOT NULL,
 	[numero] [int] NOT NULL,
 	[sector] [varchar](255) NOT NULL,
-	[precio] [numeric](18, 2) NOT NULL
+	[precio] [numeric](18, 2) NOT NULL,
+ CONSTRAINT [PK_Butaca] PRIMARY KEY CLUSTERED 
+(
+	[id_butaca] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
 
 SET ANSI_PADDING OFF
 GO
+
+ALTER TABLE [DDS].[Butaca]  WITH CHECK ADD  CONSTRAINT [FK_Butaca_Noche] FOREIGN KEY([id_noche])
+REFERENCES [DDS].[Noche] ([id_noche])
+GO
+
+ALTER TABLE [DDS].[Butaca] CHECK CONSTRAINT [FK_Butaca_Noche]
+GO
+
+
+
 
 --D = Disponible, V = Vendida
 INSERT INTO DDS.Butaca (id_noche, estado, numero, sector, precio)
@@ -469,7 +485,35 @@ INSERT INTO DDS.Butaca (id_noche, estado, numero, sector, precio)
 VALUES (9, 'O', 11, 'Platea', 500.0)
 
 -------------------------------------------------Entrada-------------------------------------
+USE [DDS2013]
+GO
+
+/****** Object:  Table [DDS].[Entrada]    Script Date: 11/18/2013 03:06:10 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [DDS].[Entrada](
+	[id_entrada] [int] IDENTITY(1,1) NOT NULL,
+	[id_butaca] [int] NOT NULL,
+	[anticipada] [bit] NOT NULL,
+	[precio_final] [numeric](18, 2) NOT NULL,
+	[fecha_venta] [datetime] NOT NULL,
+ CONSTRAINT [PK_Entrada] PRIMARY KEY CLUSTERED 
+(
+	[id_entrada] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [DDS].[Entrada]  WITH CHECK ADD  CONSTRAINT [FK_Entrada_Butaca] FOREIGN KEY([id_butaca])
+REFERENCES [DDS].[Butaca] ([id_butaca])
+GO
+
+ALTER TABLE [DDS].[Entrada] CHECK CONSTRAINT [FK_Entrada_Butaca]
+GO
 
 
-SELECT * FROM DDS.Butaca but
-WHERE estado = 'O'

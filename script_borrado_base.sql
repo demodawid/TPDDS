@@ -1,4 +1,5 @@
 
+DROP TABLE DDS.Entrada
 DROP TABLE DDS.Butaca
 DROP TABLE DDS.Noche_Banda
 DROP TABLE DDS.Noche
