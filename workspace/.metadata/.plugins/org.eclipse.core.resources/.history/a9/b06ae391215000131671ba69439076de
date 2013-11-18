@@ -1,0 +1,64 @@
+package festival.negocio.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="DDS2013.DDS.Banda")
+public class Banda implements Serializable {
+	
+	
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -6696929920118910226L;
+
+	/**
+	 * id interno de la banda
+	 */
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_banda")
+	private Integer idBanda;
+	
+	/**
+	 * nombre de la banda
+	 */
+	@Column(name="nombre")
+	private String nombre;
+
+	/**
+	 * @return the idBanda
+	 */
+	public Integer getIdBanda() {
+		return idBanda;
+	}
+
+	/**
+	 * @param idBanda the idBanda to set
+	 */
+	public void setIdBanda(Integer idBanda) {
+		this.idBanda = idBanda;
+	}
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+}

@@ -1,3 +1,6 @@
 127.0.0.1 - - [18/Nov/2013:03:26:38 -0300] "GET / HTTP/1.1" 404 955
 0:0:0:0:0:0:0:1 - - [18/Nov/2013:03:26:41 -0300] "GET /Probando/inicio.jsp HTTP/1.1" 404 1012
 0:0:0:0:0:0:0:1 - - [18/Nov/2013:03:26:51 -0300] "GET /BandasDeRock/Inicio.jsp HTTP/1.1" 200 298
+0:0:0:0:0:0:0:1 - - [18/Nov/2013:03:38:37 -0300] "GET /BandasDeRock/Inicio.jsp HTTP/1.1" 200 298
+0:0:0:0:0:0:0:1 - - [18/Nov/2013:03:38:40 -0300] "GET /BandasDeRock/Inicio.jsp HTTP/1.1" 200 298
+0:0:0:0:0:0:0:1 - - [18/Nov/2013:03:38:44 -0300] "GET /BandasDeRock/ HTTP/1.1" 404 994

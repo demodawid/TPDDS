@@ -1,0 +1,19 @@
+package test;
+
+import org.hibernate.Session;
+
+import festival.negocio.model.Entrada;
+import festival.utils.HibernateUtil;
+
+
+public class Test {
+	public static void main(String[] args) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		
+		
+		
+		Entrada unaEntrada = (Entrada) session.get(Entrada.class, 2);
+		
+	}
+}

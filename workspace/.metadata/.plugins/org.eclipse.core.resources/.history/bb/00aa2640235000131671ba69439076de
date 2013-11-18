@@ -1,0 +1,40 @@
+package festival.negocio.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="DDS2013.DDS.Butaca")
+public class Butaca implements Serializable {
+
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 584983887655448757L;
+	
+	/**
+	 * Id interno de la butaca
+	 */
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_butaca")
+	private Integer idButaca;
+	
+	/**
+	 * La noche a la cual pertenece la butaca
+	 */
+	@ManyToOne
+	@JoinColumn(name="id_noche")
+	private Noche noche;
+	
+	
+
+}

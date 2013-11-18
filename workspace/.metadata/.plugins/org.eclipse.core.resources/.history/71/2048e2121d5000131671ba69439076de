@@ -1,0 +1,7 @@
+package festival.negocio.model;
+
+import java.io.Serializable;
+
+public class Banda implements Serializable {
+
+}

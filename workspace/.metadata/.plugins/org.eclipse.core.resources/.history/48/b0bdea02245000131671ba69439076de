@@ -1,0 +1,24 @@
+package festival.negocio.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="DDS2013.DDS.Entrada")
+public class Entrada implements Serializable {
+
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -8245194543631781459L;
+	
+	/**
+	 * Id interno de la entrada
+	 */
+	private Integer idEntrada;
+	
+	
+
+}
