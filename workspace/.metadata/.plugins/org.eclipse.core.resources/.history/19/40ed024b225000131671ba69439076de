@@ -1,7 +1,0 @@
-package festival.negocio.model;
-
-import java.io.Serializable;
-
-public class Butaca implements Serializable {
-
-}
