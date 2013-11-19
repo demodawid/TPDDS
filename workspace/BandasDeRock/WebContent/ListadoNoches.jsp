@@ -13,13 +13,12 @@
 <body>
 	<h:graphicImage url="/header.jpg"/>
 	<h:form>
-		<h2> Seleccione el festival:</h2>
-		<h:selectOneMenu id="seleccionFestival" value="#{festivalesBB.festivalSeleccionadoItem}">
-			<f:selectItems value="#{festivalesBB.festivalesItems}"/>
-			<h:messages/>
+		<h2> Seleccione la noche:</h2>
+		<h:selectOneMenu id="seleccionNoche" value="#{festivalesBB.nocheSeleccionadaItem}">
+			<f:selectItems value="#{festivalesBB.nochesItems}"/>
 		</h:selectOneMenu>
 		<br>
-		<h:commandButton value="Ver Noches" action="#{festivalesBB.buscarNoches}"/>
+		
 	</h:form>
 </body>
 </f:view>

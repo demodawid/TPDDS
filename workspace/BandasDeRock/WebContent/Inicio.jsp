@@ -11,6 +11,7 @@
 <title>Bienvenido</title>
 </head>
 <body>
+	<h:graphicImage url="/header.jpg"/>
 	<div>
 		<h:form>
 			<h1>Bienvenido al sistema de compra de entradas</h1>
