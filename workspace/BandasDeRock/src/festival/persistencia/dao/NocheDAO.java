@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import festival.negocio.model.Banda;
+import festival.negocio.model.Noche;
 
-public interface BandaDao extends GenericDAO<Banda, Serializable>{
-	public Banda getEntityById(Serializable id);
+public interface NocheDAO extends GenericDAO<Noche, Serializable> {
+	public Noche getEntityById(Serializable id);
 	public List getList();
 	public List search(Map<String, Object> parameterMap);
-	public void update(Banda entity);
+	public void update(Noche entity);
 	public void deleteById(Serializable id);
-	public Integer save(Banda entity);
+	public Integer save(Noche entity);
 }

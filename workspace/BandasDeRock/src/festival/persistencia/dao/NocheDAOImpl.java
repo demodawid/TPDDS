@@ -4,16 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
-
 import org.hibernate.Session;
 
-import festival.negocio.model.Banda;
+import festival.negocio.model.Noche;
 
-public class BandaDaoImpl extends GenericDAOImpl<Banda, Serializable> implements BandaDao{
 
+public class NocheDAOImpl extends GenericDAOImpl<Noche, Serializable> implements NocheDAO{
 	@Override
-	public Banda getEntityById(Serializable id) {
+	public Noche getEntityById(Serializable id) {
 		Session session = this.getSession();
 		Integer idAEncontrar = null;
 		try {
@@ -22,12 +20,12 @@ public class BandaDaoImpl extends GenericDAOImpl<Banda, Serializable> implements
 			// TODO Tirar mi exception de negocio
 			e.printStackTrace();
 		}
-		return super.findByID(Banda.class, idAEncontrar);
+		return super.findByID(Noche.class, idAEncontrar);
 	}
 
 	@Override
 	public List getList() {
-		return super.findAll(Banda.class);
+		return super.findAll(Noche.class);
 	}
 
 	@Override
@@ -37,7 +35,7 @@ public class BandaDaoImpl extends GenericDAOImpl<Banda, Serializable> implements
 	}
 
 	@Override
-	public void update(Banda entity) {
+	public void update(Noche entity) {
 		super.update(entity);
 	}
 
@@ -47,8 +45,7 @@ public class BandaDaoImpl extends GenericDAOImpl<Banda, Serializable> implements
 	}
 	
 	@Override
-	public Integer save(Banda entity) {
+	public Integer save(Noche entity) {
 		return (Integer) super.save(entity);
 	}
-
 }

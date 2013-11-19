@@ -37,6 +37,12 @@ public class Test {
 			i++;
 			System.out.println("Banda numero " + i + ": " + banda.getNombre());
 		}
+	/*	
+		Banda unaBandaNueva = new Banda();
+		unaBandaNueva.setNombre("Los Wawanco");
+		
+		bandaDao.save(unaBandaNueva);*/
+		
 		HibernateUtil.getSessionFactory().close();
 	}
 }
