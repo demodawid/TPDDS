@@ -208,12 +208,12 @@ VALUES (4, 9, 2, 2)
 INSERT INTO DDS.Noche_Banda (id_noche, id_banda, turno, duracion_horas)
 VALUES (5, 10, 1, 2)
 INSERT INTO DDS.Noche_Banda (id_noche, id_banda, turno, duracion_horas)
-VALUES (5, 10, 2, 2)
+VALUES (5, 11, 2, 2)
 
 INSERT INTO DDS.Noche_Banda (id_noche, id_banda, turno, duracion_horas)
-VALUES (6, 11, 1, 2)
+VALUES (6, 12, 1, 2)
 INSERT INTO DDS.Noche_Banda (id_noche, id_banda, turno, duracion_horas)
-VALUES (6, 12, 2, 3)
+VALUES (6, 8, 2, 3)
 
 --Woodstock
 INSERT INTO DDS.Noche_Banda (id_noche, id_banda, turno, duracion_horas)
