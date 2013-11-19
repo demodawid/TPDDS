@@ -13,9 +13,10 @@
 <body>
 	<div>
 		<h:form>
-			<h1>Que desea hacer?</h1>
+			<h1>Bienvenido al sistema de compra de entradas</h1>
+			<h2>Que desea hacer?</h2>
 			<br>
-			<h:commandButton value="Buscar Festivales" action="#{festivalesBB.buscarFestivales}"/>			
+			<h:commandButton value="Comprar entrada" action="#{festivalesBB.buscarFestivales}"/>			
 		</h:form>
 	</div>
 </body>

@@ -1,6 +1,9 @@
 package festival.presentacion.backingBeans;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.faces.model.SelectItem;
 
 import festival.negocio.model.Festival;
 import festival.persistencia.dao.FestivalDAO;
@@ -8,8 +11,9 @@ import festival.persistencia.dao.FestivalDAOImpl;
 
 public class FestivalesBB {
 	private List<Festival> festivales;
+	private List<SelectItem> festivalesItems;
 	
-	private Integer idFestivalSeleccionado;
+	private SelectItem festivalSeleccionado;
 	
 	
 	
@@ -20,6 +24,16 @@ public class FestivalesBB {
 		try {
 			FestivalDAO festivalDAO = new FestivalDAOImpl();
 			this.setFestivales(festivalDAO.getList());
+			
+			List<SelectItem> items = new ArrayList<SelectItem>();
+			for (Festival festival : this.getFestivales()) {
+				SelectItem si = new SelectItem();
+				si.setValue(festival.getIdFestival());
+				si.setLabel(festival.getNombre());
+				items.add(si);
+			}
+			this.setFestivalesItems(items);
+			
 		} catch (Exception e) {
 			return "fallo";
 		}
@@ -41,19 +55,35 @@ public class FestivalesBB {
 	}
 
 	/**
-	 * @return the idFestivalSeleccionado
+	 * @return the festivalesItems
 	 */
-	public Integer getIdFestivalSeleccionado() {
-		return idFestivalSeleccionado;
+	public List<SelectItem> getFestivalesItems() {
+		return festivalesItems;
 	}
 
 	/**
-	 * @param idFestivalSeleccionado the idFestivalSeleccionado to set
+	 * @param festivalesItems the festivalesItems to set
 	 */
-	public void setIdFestivalSeleccionado(Integer idFestivalSeleccionado) {
-		this.idFestivalSeleccionado = idFestivalSeleccionado;
+	public void setFestivalesItems(List<SelectItem> festivalesItems) {
+		this.festivalesItems = festivalesItems;
 	}
-	
+
+	/**
+	 * @return the festivalSeleccionado
+	 */
+	public SelectItem getFestivalSeleccionado() {
+		return festivalSeleccionado;
+	}
+
+	/**
+	 * @param festivalSeleccionado the festivalSeleccionado to set
+	 */
+	public void setFestivalSeleccionado(SelectItem festivalSeleccionado) {
+		this.festivalSeleccionado = festivalSeleccionado;
+	}
+
+
+
 	
 	
 }

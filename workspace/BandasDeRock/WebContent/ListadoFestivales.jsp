@@ -12,14 +12,10 @@
 </head>
 <body>
 	<h:form>
-		<h:dataTable value="#{festivalesBB.festivales}" var="festi">
-			<h:column>
-				<h:outputText value="#{festi.idFestival}"/>
-			</h:column>
-			<h:column>
-				<h:outputText value="#{festi.nombre}"/>
-			</h:column>
-		</h:dataTable>
+		<h2> Seleccione el festival:</h2>
+		<h:selectOneMenu id="seleccionFestival" value="#{festivalesBB.festivalSeleccionado}">
+			<f:selectItems value="#{festivalesBB.festivalesItems}"/>
+		</h:selectOneMenu>
 	</h:form>
 </body>
 </f:view>
