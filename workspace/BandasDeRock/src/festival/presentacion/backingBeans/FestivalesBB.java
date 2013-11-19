@@ -1,10 +1,7 @@
 package festival.presentacion.backingBeans;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import javax.faces.model.SelectItem;
 
@@ -62,7 +59,7 @@ public class FestivalesBB {
 		for (Noche noche : this.getFestivalSeleccionado().getNoches()) {
 			SelectItem si = new SelectItem();
 			si.setValue(noche.getIdNoche());
-			si.setLabel(noche.getNumero().toString());
+			si.setLabel("Noche " + noche.getNumero().toString());
 			items.add(si);
 		}
 		this.setNochesItems(items);

@@ -78,7 +78,7 @@ public class Noche implements Serializable {
 	 * Las bandas que tocan durante la noche
 	 */
 	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinTable(name="Noche_Banda", 
+	@JoinTable(name="Noche_Banda", schema="DDS",
 		joinColumns={
 			@JoinColumn(name="id_noche", nullable = false, updatable = false)
 		},
