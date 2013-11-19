@@ -19,6 +19,7 @@
 			<h:messages/>
 		</h:selectOneMenu>
 		<br>
+		<h:commandButton value="<-- Volver" action="#{festivalesBB.volverPrincipal}"/>
 		<h:commandButton value="Ver Noches" action="#{festivalesBB.buscarNoches}"/>
 	</h:form>
 </body>

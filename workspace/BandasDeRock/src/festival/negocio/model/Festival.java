@@ -108,6 +108,4 @@ public class Festival implements Serializable {
 		this.predio = predio;
 	}
 	
-	
-	
 }

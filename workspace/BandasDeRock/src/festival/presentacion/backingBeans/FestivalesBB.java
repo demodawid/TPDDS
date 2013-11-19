@@ -19,7 +19,8 @@ public class FestivalesBB {
 	private Integer nocheSeleccionadaItem;
 	private static final String EXITO = "exito";
 	private static final String FALLO = "fallo";
-	
+	private static final String VOLVER_PRINCIPAL = "volverPrincipal";
+	private static final String VOLVER_SELECCION_FESTIVAL = "volverSeleccionFestival";
 	
 	
 	/**
@@ -45,7 +46,7 @@ public class FestivalesBB {
 		return EXITO;
 	}
 	
-	public String buscarNoches(){
+	public String buscarNoches() {
 		List<SelectItem> items = new ArrayList<SelectItem>();
 		
 		Integer idFestivalSeleccionado = (Integer) this.getFestivalSeleccionadoItem();
@@ -64,6 +65,17 @@ public class FestivalesBB {
 		}
 		this.setNochesItems(items);
 		return EXITO;
+	}
+	
+	/**
+	 * Volver a la pagina principal
+	 * @return
+	 */
+	public String volverPrincipal(){
+		return VOLVER_PRINCIPAL;
+	}
+	public String volverSeleccionFestival(){
+		return VOLVER_SELECCION_FESTIVAL;
 	}
 
 	/**

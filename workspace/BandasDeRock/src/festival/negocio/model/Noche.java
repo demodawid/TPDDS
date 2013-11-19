@@ -77,7 +77,7 @@ public class Noche implements Serializable {
 	/**
 	 * Las bandas que tocan durante la noche
 	 */
-	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="Noche_Banda", schema="DDS",
 		joinColumns={
 			@JoinColumn(name="id_noche", nullable = false, updatable = false)
@@ -205,6 +205,20 @@ public class Noche implements Serializable {
 	 */
 	public void setListaBandas(List<Banda> listaBandas) {
 		this.listaBandas = listaBandas;
+	}
+
+	/**
+	 * @return the butacas
+	 */
+	public List<Butaca> getButacas() {
+		return butacas;
+	}
+
+	/**
+	 * @param butacas the butacas to set
+	 */
+	public void setButacas(List<Butaca> butacas) {
+		this.butacas = butacas;
 	}
 	
 	

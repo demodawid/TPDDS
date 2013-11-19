@@ -14,7 +14,7 @@
 	<h:graphicImage url="/header.jpg"/>
 	<h:form>
 		<h2>Listado de bandas por noche:</h2>
-		<h:dataTable value="#{festivalesBB.festivalSeleccionado.noches }" var="noche">
+		<h:dataTable value="#{festivalesBB.festivalSeleccionado.noches }" var="noche" border="1">
 			<h:column>
 				<h:outputText value="Noche #{noche.numero}"/>
 			</h:column>
@@ -31,7 +31,7 @@
 			<f:selectItems value="#{festivalesBB.nochesItems}"/>
 		</h:selectOneMenu>
 		<br>
-		
+		<h:commandButton value="<-- Volver" action="#{festivalesBB.volverSeleccionFestival}"/>
 	</h:form>
 </body>
 </f:view>
