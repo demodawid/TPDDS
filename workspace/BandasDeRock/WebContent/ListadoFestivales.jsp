@@ -8,16 +8,19 @@
 <f:view>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Bienvenido</title>
+<title>Listado de festivales</title>
 </head>
 <body>
-	<div>
-		<h:form>
-			<h1>Que desea hacer?</h1>
-			<br>
-			<h:commandButton value="Buscar Festivales" action="#{festivalesBB.buscarFestivales}"/>			
-		</h:form>
-	</div>
+	<h:form>
+		<h:dataTable value="#{festivalesBB.festivales}" var="festi">
+			<h:column>
+				<h:outputText value="#{festi.idFestival}"/>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{festi.nombre}"/>
+			</h:column>
+		</h:dataTable>
+	</h:form>
 </body>
 </f:view>
 </html>
