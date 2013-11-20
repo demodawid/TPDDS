@@ -9,12 +9,15 @@ import festival.negocio.model.Festival;
 import festival.negocio.model.Noche;
 import festival.persistencia.dao.FestivalDAO;
 import festival.persistencia.dao.FestivalDAOImpl;
+import festival.persistencia.vistas.FestivalView;
+import festival.persistencia.vistas.NocheView;
+import festival.utils.TransformerFestivalesView;
 
 public class FestivalesBB {
 	private List<Festival> festivales;
 	private List<SelectItem> festivalesItems;
 	private Integer festivalSeleccionadoItem;
-	private Festival festivalSeleccionado;
+	private FestivalView festivalSeleccionado;
 	private List<SelectItem> nochesItems;
 	private Integer nocheSeleccionadaItem;
 	private static final String EXITO = "exito";
@@ -53,11 +56,11 @@ public class FestivalesBB {
 		
 		for (Festival festival : this.getFestivales()) {
 			if (festival.getIdFestival().equals(idFestivalSeleccionado)) {
-				this.setFestivalSeleccionado(festival);
+				this.setFestivalSeleccionado(TransformerFestivalesView.transformFestival(festival));
 			}
 		}
 		
-		for (Noche noche : this.getFestivalSeleccionado().getNoches()) {
+		for (NocheView noche : this.getFestivalSeleccionado().getNoches()) {
 			SelectItem si = new SelectItem();
 			si.setValue(noche.getIdNoche());
 			si.setLabel("Noche " + noche.getNumero().toString());
@@ -125,14 +128,14 @@ public class FestivalesBB {
 	/**
 	 * @param festivalSeleccionado the festivalSeleccionado to set
 	 */
-	public void setFestivalSeleccionado(Festival festivalSeleccionado) {
+	public void setFestivalSeleccionado(FestivalView festivalSeleccionado) {
 		this.festivalSeleccionado = festivalSeleccionado;
 	}
 
 	/**
 	 * @return the festivalSeleccionado
 	 */
-	public Festival getFestivalSeleccionado() {
+	public FestivalView getFestivalSeleccionado() {
 		return festivalSeleccionado;
 	}
 
