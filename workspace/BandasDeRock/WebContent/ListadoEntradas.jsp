@@ -14,7 +14,9 @@
 	<h:form>
 		<h2>Seleccione la entrada que desea comprar:</h2>
 		<h:dataTable>
-			<h:commandButton value="#{festivalesBB.nocheSeleccionada.}"/>
+			<h:column>
+				<f:facet name="header"><h:outputText value=""/></f:facet>
+			</h:column>
 		</h:dataTable>
 	</h:form>
 </body>

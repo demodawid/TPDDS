@@ -37,13 +37,6 @@ public class Butaca implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_noche")
 	private Noche noche;
-	
-	/**
-	 * El estado de la butaca
-	 * 'O' = Ocupada, 'D' = Disponible
-	 */
-	@Column(name="estado")
-	private Character estado;
 
 	/**
 	 * El numero de butaca
@@ -95,20 +88,6 @@ public class Butaca implements Serializable {
 	 */
 	public void setNoche(Noche noche) {
 		this.noche = noche;
-	}
-
-	/**
-	 * @return the estado
-	 */
-	public Character getEstado() {
-		return estado;
-	}
-
-	/**
-	 * @param estado the estado to set
-	 */
-	public void setEstado(Character estado) {
-		this.estado = estado;
 	}
 
 	/**

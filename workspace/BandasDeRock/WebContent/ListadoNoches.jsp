@@ -29,11 +29,19 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Fecha"/></f:facet>
-				<h:outputText value="#{noche.fecha}"/>
+				<h:outputText value="#{noche.fecha}">
+					<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+				</h:outputText>
 			</h:column>
 			<h:column>
-				<f:facet name="header"><h:outputText value="Fecha limite para comprar anticipada:"/></f:facet>
-				<h:outputText value="#{noche.fechaFinAnticipada}"/>
+				<f:facet name="header"><h:outputText value="Fecha límite para compra anticipada"/></f:facet>
+				<h:outputText value="#{noche.fechaFinAnticipada}">
+					<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Hora de inicio"/></f:facet>
+				<h:outputText value="#{noche.horaInicio}"/>
 			</h:column>
 		</h:dataTable>
 		<h2>Seleccione la noche:</h2>

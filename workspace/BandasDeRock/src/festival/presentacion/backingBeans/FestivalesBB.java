@@ -73,7 +73,7 @@ public class FestivalesBB {
 	
 	public String buscarEntrada() {
 		
-		return "";
+		return EXITO;
 	}
 	/**
 	 * Volver a la pagina principal

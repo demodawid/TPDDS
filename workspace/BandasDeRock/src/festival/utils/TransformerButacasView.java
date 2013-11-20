@@ -7,7 +7,6 @@ public class TransformerButacasView {
 	public static ButacaView transformButaca(Butaca butaca){
 		ButacaView butacaView = new ButacaView();
 		
-		butacaView.setEstado(butaca.getEstado());
 		butacaView.setIdButaca(butaca.getIdButaca());
 		butacaView.setNumero(butaca.getNumero());
 		butacaView.setPrecioBase(butaca.getPrecioBase().toString());

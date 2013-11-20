@@ -3,7 +3,6 @@ package festival.persistencia.vistas;
 
 public class ButacaView {
 	private Integer idButaca;
-	private Character estado;
 	private Integer numero;
 	private String sector;
 	private String precioBase;
@@ -20,18 +19,6 @@ public class ButacaView {
 	 */
 	public void setIdButaca(Integer idButaca) {
 		this.idButaca = idButaca;
-	}
-	/**
-	 * @return the estado
-	 */
-	public Character getEstado() {
-		return estado;
-	}
-	/**
-	 * @param estado the estado to set
-	 */
-	public void setEstado(Character estado) {
-		this.estado = estado;
 	}
 	/**
 	 * @return the numero
