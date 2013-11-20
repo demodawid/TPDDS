@@ -1,13 +1,28 @@
 package festival.persistencia.vistas;
 
+import java.math.BigDecimal;
+
 
 public class ButacaView {
 	private Integer idButaca;
 	private Integer numero;
 	private String sector;
-	private String precioBase;
+	private BigDecimal precioBase;
 	private String disponible;
 	private Integer idEntrada;
+	private Integer descuento;
+	
+	/**
+	 * Metodo que calcula el precio con descuento
+	 */
+	public String getPrecioConDescuento() {
+		return this.getPrecioBase()
+					.subtract(
+						this.getPrecioBase().multiply(BigDecimal.valueOf(descuento))
+											.divide(new BigDecimal(100))
+							).toString();
+	}
+	
 	/**
 	 * @return the idButaca
 	 */
@@ -47,13 +62,13 @@ public class ButacaView {
 	/**
 	 * @return the precioBase
 	 */
-	public String getPrecioBase() {
+	public BigDecimal getPrecioBase() {
 		return precioBase;
 	}
 	/**
 	 * @param precioBase the precioBase to set
 	 */
-	public void setPrecioBase(String precioBase) {
+	public void setPrecioBase(BigDecimal precioBase) {
 		this.precioBase = precioBase;
 	}
 	/**
@@ -80,5 +95,20 @@ public class ButacaView {
 	public void setIdEntrada(Integer idEntrada) {
 		this.idEntrada = idEntrada;
 	}
+
+	/**
+	 * @return the descuento
+	 */
+	public Integer getDescuento() {
+		return descuento;
+	}
+
+	/**
+	 * @param descuento the descuento to set
+	 */
+	public void setDescuento(Integer descuento) {
+		this.descuento = descuento;
+	}
+	
 	
 }

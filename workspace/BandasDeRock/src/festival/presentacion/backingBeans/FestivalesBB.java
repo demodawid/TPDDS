@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import festival.negocio.model.Butaca;
 import festival.negocio.model.Festival;
 import festival.negocio.model.Noche;
 import festival.persistencia.dao.FestivalDAO;
 import festival.persistencia.dao.FestivalDAOImpl;
+import festival.persistencia.vistas.ButacaView;
 import festival.persistencia.vistas.FestivalView;
 import festival.persistencia.vistas.NocheView;
 import festival.utils.TransformerFestivalesView;
@@ -20,6 +22,7 @@ public class FestivalesBB {
 	private FestivalView festivalSeleccionado;
 	private List<SelectItem> nochesItems;
 	private Integer nocheSeleccionadaItem;
+	private NocheView nocheSeleccionada;
 	private static final String EXITO = "exito";
 	private static final String FALLO = "fallo";
 	private static final String VOLVER_PRINCIPAL = "volverPrincipal";
@@ -53,10 +56,8 @@ public class FestivalesBB {
 	public String buscarNoches() {
 		List<SelectItem> items = new ArrayList<SelectItem>();
 		
-		Integer idFestivalSeleccionado = (Integer) this.getFestivalSeleccionadoItem();
-		
 		for (Festival festival : this.getFestivales()) {
-			if (festival.getIdFestival().equals(idFestivalSeleccionado)) {
+			if (festival.getIdFestival().equals(this.getFestivalSeleccionadoItem())) {
 				this.setFestivalSeleccionado(TransformerFestivalesView.transformFestival(festival));
 			}
 		}
@@ -72,7 +73,12 @@ public class FestivalesBB {
 	}
 	
 	public String buscarEntrada() {
-		
+		List<SelectItem> items = new ArrayList<SelectItem>();
+		for (NocheView nocheView : this.getFestivalSeleccionado().getNoches()) {
+			if (this.getNocheSeleccionadaItem().equals(nocheView.getIdNoche())) {
+				this.setNocheSeleccionada(nocheView);
+			}
+		}
 		return EXITO;
 	}
 	/**
@@ -184,6 +190,20 @@ public class FestivalesBB {
 	 */
 	public void setEsEntradaAnticipada(Boolean esEntradaAnticipada) {
 		this.esEntradaAnticipada = esEntradaAnticipada;
+	}
+
+	/**
+	 * @return the nocheSeleccionada
+	 */
+	public NocheView getNocheSeleccionada() {
+		return nocheSeleccionada;
+	}
+
+	/**
+	 * @param nocheSeleccionada the nocheSeleccionada to set
+	 */
+	public void setNocheSeleccionada(NocheView nocheSeleccionada) {
+		this.nocheSeleccionada = nocheSeleccionada;
 	}
 
 	

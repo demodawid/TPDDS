@@ -17,7 +17,7 @@ public class TransformerNochesView {
 		List<ButacaView> butacasView = new ArrayList<ButacaView>();
 
 		for (Butaca butaca : noche.getButacas()) {
-			ButacaView butacaView = TransformerButacasView.transformButaca(butaca);
+			ButacaView butacaView = TransformerButacasView.transformButaca(butaca, noche.getDescuento());
 			butacasView.add(butacaView);
 		}
 		nocheView.setButacas(butacasView);
