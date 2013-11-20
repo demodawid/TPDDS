@@ -36,6 +36,10 @@
 					<h:outputText value="#{butaca.precioBase}"/>
 				</c:if>
 			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Comprar"/></f:facet>
+				<h:commandButton value="Comprar" rendered="#{butaca.disponible eq 'Si'}"/>
+			</h:column>
 		</h:dataTable>
 	</h:form>
 </body>
