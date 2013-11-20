@@ -12,7 +12,12 @@ public class TransformerButacasView {
 		butacaView.setNumero(butaca.getNumero());
 		butacaView.setPrecioBase(butaca.getPrecioBase().toString());
 		butacaView.setSector(butaca.getSector());
-		
+		if (butaca.getEntrada() == null) {
+			butacaView.setDisponible("Si");
+		} else {
+			butacaView.setDisponible("No");
+			butacaView.setIdEntrada(butaca.getEntrada().getIdEntrada());
+		}
 		return butacaView;
 	}
 }

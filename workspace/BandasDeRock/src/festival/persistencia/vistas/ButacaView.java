@@ -7,6 +7,8 @@ public class ButacaView {
 	private Integer numero;
 	private String sector;
 	private String precioBase;
+	private String disponible;
+	private Integer idEntrada;
 	/**
 	 * @return the idButaca
 	 */
@@ -67,6 +69,29 @@ public class ButacaView {
 	public void setPrecioBase(String precioBase) {
 		this.precioBase = precioBase;
 	}
-	
+	/**
+	 * @return the disponible
+	 */
+	public String getDisponible() {
+		return disponible;
+	}
+	/**
+	 * @param disponible the disponible to set
+	 */
+	public void setDisponible(String disponible) {
+		this.disponible = disponible;
+	}
+	/**
+	 * @return the idEntrada
+	 */
+	public Integer getIdEntrada() {
+		return idEntrada;
+	}
+	/**
+	 * @param idEntrada the idEntrada to set
+	 */
+	public void setIdEntrada(Integer idEntrada) {
+		this.idEntrada = idEntrada;
+	}
 	
 }

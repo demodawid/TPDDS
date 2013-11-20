@@ -152,6 +152,21 @@ public class Butaca implements Serializable {
 	public void setPrecioBase(BigDecimal precioBase) {
 		this.precioBase = precioBase;
 	}
+
+	/**
+	 * @return the entrada
+	 */
+	public Entrada getEntrada() {
+		return entrada;
+	}
+
+	/**
+	 * @param entrada the entrada to set
+	 */
+	public void setEntrada(Entrada entrada) {
+		this.entrada = entrada;
+	}
+	
 	
 	
 }

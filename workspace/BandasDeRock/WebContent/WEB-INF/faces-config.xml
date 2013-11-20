@@ -48,6 +48,10 @@
 			<from-outcome>volverSeleccionFestival</from-outcome>
 			<to-view-id>/ListadoFestivales.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/ListadoEntradas.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 </faces-config>

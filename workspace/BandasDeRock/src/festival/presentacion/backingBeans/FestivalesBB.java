@@ -24,6 +24,7 @@ public class FestivalesBB {
 	private static final String FALLO = "fallo";
 	private static final String VOLVER_PRINCIPAL = "volverPrincipal";
 	private static final String VOLVER_SELECCION_FESTIVAL = "volverSeleccionFestival";
+	private Boolean esEntradaAnticipada;
 	
 	
 	/**
@@ -70,6 +71,10 @@ public class FestivalesBB {
 		return EXITO;
 	}
 	
+	public String buscarEntrada() {
+		
+		return "";
+	}
 	/**
 	 * Volver a la pagina principal
 	 * @return
@@ -167,7 +172,19 @@ public class FestivalesBB {
 		this.nocheSeleccionadaItem = nocheSeleccionadaItem;
 	}
 
-	
-	
+	/**
+	 * @return the esEntradaAnticipada
+	 */
+	public Boolean getEsEntradaAnticipada() {
+		return esEntradaAnticipada;
+	}
+
+	/**
+	 * @param esEntradaAnticipada the esEntradaAnticipada to set
+	 */
+	public void setEsEntradaAnticipada(Boolean esEntradaAnticipada) {
+		this.esEntradaAnticipada = esEntradaAnticipada;
+	}
+
 	
 }

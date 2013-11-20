@@ -77,7 +77,7 @@ public class Noche implements Serializable {
 	/**
 	 * Las bandas que tocan durante la noche
 	 */
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER) //si no es eager, hibernate intenta eliminar el contenido de la tabla Noche_Banda despues de leerlo... muy raro 
 	@JoinTable(name="Noche_Banda", schema="DDS",
 		joinColumns={
 			@JoinColumn(name="id_noche", nullable = false, updatable = false)
