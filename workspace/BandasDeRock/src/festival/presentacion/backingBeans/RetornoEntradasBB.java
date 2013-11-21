@@ -1,20 +1,37 @@
 package festival.presentacion.backingBeans;
 
 import festival.negocio.model.Entrada;
+import festival.negocio.model.Festival;
+import festival.negocio.model.Noche;
 import festival.persistencia.dao.EntradaDAO;
 import festival.persistencia.dao.EntradaDAOImpl;
+import festival.persistencia.vistas.EntradaView;
+import festival.persistencia.vistas.FestivalView;
+import festival.persistencia.vistas.NocheView;
 import festival.utils.ConstantesFestival;
+import festival.utils.TransformerEntradasView;
+import festival.utils.TransformerFestivalesView;
+import festival.utils.TransformerNochesView;
 
 public class RetornoEntradasBB {
 	private String mensajeDeError;
 	private Integer idEntradaARetornar;
-	private Entrada entradaARetornar;
+	private EntradaView entradaARetornar;
+	private FestivalView festivalDeLaEntradaARetornar;
+	private NocheView nocheDeLaEntradaARetornar;
 	
 	
 	public String verEntradaADevolver () {
 		try {
 			EntradaDAO entradaDAO = new EntradaDAOImpl();
-			this.setEntradaARetornar(entradaDAO.getEntityById(this.getIdEntradaARetornar()));
+			Entrada entradaEntity = entradaDAO.getEntityById(this.getIdEntradaARetornar());
+			this.setEntradaARetornar(TransformerEntradasView.transormEntrada(entradaEntity));
+			
+			Noche nocheEntity = entradaEntity.getButaca().getNoche();
+			Festival festivalEntity = entradaEntity.getButaca().getNoche().getFestival();
+			
+			this.setFestivalDeLaEntradaARetornar(TransformerFestivalesView.transformFestival(festivalEntity));
+			this.setNocheDeLaEntradaARetornar(TransformerNochesView.transformNoche(nocheEntity));
 			if (this.getEntradaARetornar() == null) {
 				this.setMensajeDeError("La entrada es inexistente");
 				return ConstantesFestival.FALLO;
@@ -55,14 +72,14 @@ public class RetornoEntradasBB {
 	/**
 	 * @return the entradaARetornar
 	 */
-	public Entrada getEntradaARetornar() {
+	public EntradaView getEntradaARetornar() {
 		return entradaARetornar;
 	}
 
 	/**
 	 * @param entradaARetornar the entradaARetornar to set
 	 */
-	public void setEntradaARetornar(Entrada entradaARetornar) {
+	public void setEntradaARetornar(EntradaView entradaARetornar) {
 		this.entradaARetornar = entradaARetornar;
 	}
 
@@ -79,4 +96,35 @@ public class RetornoEntradasBB {
 	public void setMensajeDeError(String mensajeDeError) {
 		this.mensajeDeError = mensajeDeError;
 	}
+
+	/**
+	 * @return the festivalDeLaEntradaARetornar
+	 */
+	public FestivalView getFestivalDeLaEntradaARetornar() {
+		return festivalDeLaEntradaARetornar;
+	}
+
+	/**
+	 * @param festivalDeLaEntradaARetornar the festivalDeLaEntradaARetornar to set
+	 */
+	public void setFestivalDeLaEntradaARetornar(
+			FestivalView festivalDeLaEntradaARetornar) {
+		this.festivalDeLaEntradaARetornar = festivalDeLaEntradaARetornar;
+	}
+
+	/**
+	 * @return the nocheDeLaEntradaARetornar
+	 */
+	public NocheView getNocheDeLaEntradaARetornar() {
+		return nocheDeLaEntradaARetornar;
+	}
+
+	/**
+	 * @param nocheDeLaEntradaARetornar the nocheDeLaEntradaARetornar to set
+	 */
+	public void setNocheDeLaEntradaARetornar(NocheView nocheDeLaEntradaARetornar) {
+		this.nocheDeLaEntradaARetornar = nocheDeLaEntradaARetornar;
+	}
+	
+	
 }
