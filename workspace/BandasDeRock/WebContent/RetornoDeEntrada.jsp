@@ -8,7 +8,7 @@
 <f:view>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Bienvenido</title>
+<title>Retorno de entradas</title>
 </head>
 <body>
 	<h:graphicImage url="/header.jpg"/>
@@ -17,15 +17,14 @@
 	<h:outputText value="#{festivalesBB.fechaDeHoy}">
 		<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
 	</h:outputText>
-	<div>
-		<h:form>
-			<h1>Bienvenido al sistema de compra de entradas</h1>
-			<h2>Que desea hacer?</h2>
-			<br>
-			<h:commandButton value="Comprar entrada" action="#{festivalesBB.buscarFestivales}"/>		
-			<h:commandButton value="Retornar entrada" action="retornarEntrada"/>
-		</h:form>
-	</div>
+	<h1>Ingrese los datos de la entrada a retornar:</h1>
+	<h:form>
+		<h:outputLabel for="inputIdEntrada" value="Codigo de entrada:"/>
+		<h:inputText id="inputIdEntrada" converterMessage="Ingrese codigo NUMERICO de entrada.">
+			<f:convertNumber pattern="#0" />
+		</h:inputText>
+		<h:message for="inputIdEntrada"/>
+	</h:form>
 </body>
 </f:view>
 </html>

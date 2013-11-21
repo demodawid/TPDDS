@@ -22,6 +22,10 @@
 			<from-outcome>error</from-outcome>
 			<to-view-id>/Inicio.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>retornarEntrada</from-outcome>
+			<to-view-id>/RetornoDeEntrada.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
