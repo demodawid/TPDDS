@@ -48,7 +48,8 @@
 				</c:if>
 	
 		</h:panelGrid>
-		<h:commandButton value="<-- Volver" action="volverListadoEntradas"/>
+		<h:commandButton value="<-- Anterior" action="volverListadoEntradas"/>
+		<h:commandButton value="Volver al comienzo" action="volverPrincipal"/>
 		<h:commandButton value="Confirmar Compra" action="#{festivalesBB.comprarEntrada}"/>
 	</h:form>
 </body>

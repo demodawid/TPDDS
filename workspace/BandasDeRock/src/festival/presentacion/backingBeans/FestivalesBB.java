@@ -40,6 +40,7 @@ public class FestivalesBB {
 	private NocheView nocheSeleccionada;
 	private Integer idButacaSeleccionada;
 	private ButacaView butacaSeleccionada;
+	private Integer idEntradaComprada;
 	private static final String EXITO = "exito";
 	private static final String FALLO = "fallo";
 	private Boolean esEntradaAnticipada;
@@ -141,7 +142,9 @@ public class FestivalesBB {
 			entrada.setButaca(butaca);
 
 			EntradaDAO entradaDAO = new EntradaDAOImpl();
-			entradaDAO.save(entrada);
+			Integer id = entradaDAO.save(entrada);
+			
+			this.setIdEntradaComprada(id);
 			
 		} catch (Exception e) {
 			return FALLO;
@@ -316,5 +319,18 @@ public class FestivalesBB {
 		this.fechaDeHoy = fechaDeHoy;
 	}
 
+	/**
+	 * @return the idEntradaComprada
+	 */
+	public Integer getIdEntradaComprada() {
+		return idEntradaComprada;
+	}
+
+	/**
+	 * @param idEntradaComprada the idEntradaComprada to set
+	 */
+	public void setIdEntradaComprada(Integer idEntradaComprada) {
+		this.idEntradaComprada = idEntradaComprada;
+	}
 	
 }

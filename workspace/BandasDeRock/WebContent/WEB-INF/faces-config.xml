@@ -84,6 +84,17 @@
 			<from-outcome>volverPrincipal</from-outcome>
 			<to-view-id>/Inicio.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/Confirmacion.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/Confirmacion.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>volverPrincipal</from-outcome>
+			<to-view-id>/Inicio.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 </faces-config>

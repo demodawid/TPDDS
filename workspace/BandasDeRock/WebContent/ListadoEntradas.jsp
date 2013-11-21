@@ -43,7 +43,8 @@
 				</h:commandButton>
 			</h:column>
 		</h:dataTable>
-		<h:commandButton value="<-- Volver" action="volverAListaNoches"/>
+		<h:commandButton value="<-- Anterior" action="volverAListaNoches"/>
+		<h:commandButton value="Volver al comienzo" action="volverPrincipal"/>
 	</h:form>
 </body>
 </f:view>
