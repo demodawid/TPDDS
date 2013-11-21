@@ -28,6 +28,7 @@ import festival.persistencia.dao.FestivalDAOImpl;
 import festival.persistencia.vistas.ButacaView;
 import festival.persistencia.vistas.FestivalView;
 import festival.persistencia.vistas.NocheView;
+import festival.utils.ConstantesFestival;
 import festival.utils.TransformerFestivalesView;
 
 public class FestivalesBB {
@@ -41,8 +42,6 @@ public class FestivalesBB {
 	private Integer idButacaSeleccionada;
 	private ButacaView butacaSeleccionada;
 	private Integer idEntradaComprada;
-	private static final String EXITO = "exito";
-	private static final String FALLO = "fallo";
 	private Boolean esEntradaAnticipada;
 	private String mensajeDeError;
 	private Date fechaDeHoy;
@@ -81,9 +80,9 @@ public class FestivalesBB {
 			this.setFestivalesItems(items);
 			
 		} catch (Exception e) {
-			return FALLO;
+			return ConstantesFestival.FALLO;
 		}
-		return EXITO;
+		return ConstantesFestival.EXITO;
 	}
 	
 	public String buscarNoches() {
@@ -102,17 +101,16 @@ public class FestivalesBB {
 			items.add(si);
 		}
 		this.setNochesItems(items);
-		return EXITO;
+		return ConstantesFestival.EXITO;
 	}
 	
 	public String buscarEntrada() {
-		List<SelectItem> items = new ArrayList<SelectItem>();
 		for (NocheView nocheView : this.getFestivalSeleccionado().getNoches()) {
 			if (this.getNocheSeleccionadaItem().equals(nocheView.getIdNoche())) {
 				this.setNocheSeleccionada(nocheView);
 			}
 		}
-		return EXITO;
+		return ConstantesFestival.EXITO;
 	}
 	
 	public String armarCompraEntrada() {
@@ -121,7 +119,7 @@ public class FestivalesBB {
 				this.setButacaSeleccionada(butacaView);
 			}
 		}
-		return EXITO;
+		return ConstantesFestival.EXITO;
 	}
 	public String comprarEntrada() {
 		ButacaDAO butacaDAO = new ButacaDAOImpl();
@@ -147,9 +145,9 @@ public class FestivalesBB {
 			this.setIdEntradaComprada(id);
 			
 		} catch (Exception e) {
-			return FALLO;
+			return ConstantesFestival.FALLO;
 		}
-		return EXITO;
+		return ConstantesFestival.EXITO;
 	}
 	/**
 	 * @return the festivales

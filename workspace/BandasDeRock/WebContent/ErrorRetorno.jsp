@@ -8,7 +8,7 @@
 <f:view>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Retorno de entradas</title>
+<title>Error en el retorno</title>
 </head>
 <body>
 	<h:graphicImage url="/header.jpg"/>
@@ -17,16 +17,10 @@
 	<h:outputText value="#{festivalesBB.fechaDeHoy}">
 		<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
 	</h:outputText>
-	<h1>Ingrese los datos de la entrada a retornar:</h1>
 	<h:form>
-		<h:outputLabel for="inputIdEntrada" value="Codigo de entrada:"/>
-		<h:inputText id="inputIdEntrada" converterMessage="Ingrese codigo NUMERICO de entrada." 
-			value="#{retornoEntradasBB.idEntradaARetornar}">
-			<f:convertNumber pattern="#0" />
-		</h:inputText>
-		<h:message for="inputIdEntrada"/>
+		<h2> <h:outputText value="Error en la aplicacion: #{retornoEntradasBB.mensajeDeError}"/> </h2>
 		<br>
-		<h:commandButton value="Ver entrada" action="#{retornoEntradasBB.verEntradaADevolver}"/>
+		<h:commandButton value="Volver al comienzo" action="volverPrincipal"/>
 	</h:form>
 </body>
 </f:view>

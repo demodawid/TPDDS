@@ -23,7 +23,7 @@
 			<h2>Que desea hacer?</h2>
 			<br>
 			<h:commandButton value="Comprar entrada" action="#{festivalesBB.buscarFestivales}"/>		
-			<h:commandButton value="Retornar entrada" action="retornarEntrada"/>
+			<h:commandButton value="Retornar entrada" action="#{retornoEntradasBB.iniciarRetornoEntrada}"/>
 		</h:form>
 	</div>
 </body>

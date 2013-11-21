@@ -11,7 +11,6 @@ import festival.negocio.model.Entrada;
 public class EntradaDAOImpl extends GenericDAOImpl<Entrada, Serializable> implements EntradaDAO {
 	@Override
 	public Entrada getEntityById(Serializable id) {
-		Session session = this.getSession();
 		Integer idAEncontrar = null;
 		try {
 			idAEncontrar = (Integer) id;
