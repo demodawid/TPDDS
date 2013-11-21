@@ -38,9 +38,12 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Comprar"/></f:facet>
-				<h:commandButton value="Comprar" rendered="#{butaca.disponible eq 'Si'}"/>
+				<h:commandButton value="Comprar" rendered="#{butaca.disponible eq 'Si'}" action="#{festivalesBB.armarCompraEntrada}">
+					<f:setPropertyActionListener value="#{butaca.idButaca}" target="#{festivalesBB.idButacaSeleccionada}"/>
+				</h:commandButton>
 			</h:column>
 		</h:dataTable>
+		<h:commandButton value="<-- Volver" action="volverAListaNoches"/>
 	</h:form>
 </body>
 </f:view>

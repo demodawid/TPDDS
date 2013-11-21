@@ -49,7 +49,7 @@
 			<f:selectItems value="#{festivalesBB.nochesItems}"/>
 		</h:selectOneMenu>
 		<br>
-		<h:commandButton value="<-- Volver" action="#{festivalesBB.volverSeleccionFestival}"/>
+		<h:commandButton value="<-- Volver" action="volverSeleccionFestival"/>
 		<h:commandButton value="Seleccionar Noche" action="#{festivalesBB.buscarEntrada}"/> 
 		<h:selectBooleanCheckbox title="anticipada"	value="#{festivalesBB.esEntradaAnticipada}" />
 		<h:outputText value="Es entrada anticipada?"/>

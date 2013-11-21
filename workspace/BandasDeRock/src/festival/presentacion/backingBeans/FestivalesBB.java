@@ -2,7 +2,9 @@ package festival.presentacion.backingBeans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import festival.negocio.model.Butaca;
@@ -23,12 +25,12 @@ public class FestivalesBB {
 	private List<SelectItem> nochesItems;
 	private Integer nocheSeleccionadaItem;
 	private NocheView nocheSeleccionada;
+	private Integer idButacaSeleccionada;
+	private ButacaView butacaSeleccionada;
 	private static final String EXITO = "exito";
 	private static final String FALLO = "fallo";
-	private static final String VOLVER_PRINCIPAL = "volverPrincipal";
-	private static final String VOLVER_SELECCION_FESTIVAL = "volverSeleccionFestival";
 	private Boolean esEntradaAnticipada;
-	
+	private String mensajeDeError;
 	
 	/**
 	 * Busca todos los festivales
@@ -81,17 +83,19 @@ public class FestivalesBB {
 		}
 		return EXITO;
 	}
-	/**
-	 * Volver a la pagina principal
-	 * @return
-	 */
-	public String volverPrincipal(){
-		return VOLVER_PRINCIPAL;
+	
+	public String armarCompraEntrada() {
+		for (ButacaView butacaView: this.getNocheSeleccionada().getButacas()) {
+			if (butacaView.getIdButaca().equals(this.getIdButacaSeleccionada())) {
+				this.setButacaSeleccionada(butacaView);
+			}
+		}
+		return EXITO;
 	}
-	public String volverSeleccionFestival(){
-		return VOLVER_SELECCION_FESTIVAL;
+	public String comprarEntrada() {
+		
+		return EXITO;
 	}
-
 	/**
 	 * @return the festivales
 	 */
@@ -119,8 +123,6 @@ public class FestivalesBB {
 	public void setFestivalesItems(List<SelectItem> festivalesItems) {
 		this.festivalesItems = festivalesItems;
 	}
-
-
 
 	/**
 	 * @return the nochesItems
@@ -204,6 +206,48 @@ public class FestivalesBB {
 	 */
 	public void setNocheSeleccionada(NocheView nocheSeleccionada) {
 		this.nocheSeleccionada = nocheSeleccionada;
+	}
+
+	/**
+	 * @return the butacaSeleccionada
+	 */
+	public ButacaView getButacaSeleccionada() {
+		return butacaSeleccionada;
+	}
+
+	/**
+	 * @param butacaSeleccionada the butacaSeleccionada to set
+	 */
+	public void setButacaSeleccionada(ButacaView butacaSeleccionada) {
+		this.butacaSeleccionada = butacaSeleccionada;
+	}
+
+	/**
+	 * @return the idButacaSeleccionada
+	 */
+	public Integer getIdButacaSeleccionada() {
+		return idButacaSeleccionada;
+	}
+
+	/**
+	 * @param idButacaSeleccionada the idButacaSeleccionada to set
+	 */
+	public void setIdButacaSeleccionada(Integer idButacaSeleccionada) {
+		this.idButacaSeleccionada = idButacaSeleccionada;
+	}
+
+	/**
+	 * @return the mensajeDeError
+	 */
+	public String getMensajeDeError() {
+		return mensajeDeError;
+	}
+
+	/**
+	 * @param mensajeDeError the mensajeDeError to set
+	 */
+	public void setMensajeDeError(String mensajeDeError) {
+		this.mensajeDeError = mensajeDeError;
 	}
 
 	

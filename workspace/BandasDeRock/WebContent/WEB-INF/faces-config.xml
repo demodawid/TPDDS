@@ -52,6 +52,38 @@
 			<from-outcome>exito</from-outcome>
 			<to-view-id>/ListadoEntradas.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>volverPrincipal</from-outcome>
+			<to-view-id>/Inicio.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/ListadoEntradas.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>volverAListaNoches</from-outcome>
+			<to-view-id>/ListadoNoches.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/ComprarEntrada.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>volverPrincipal</from-outcome>
+			<to-view-id>/Inicio.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/ComprarEntrada.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>volverListadoEntradas</from-outcome>
+			<to-view-id>/ListadoEntradas.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>volverPrincipal</from-outcome>
+			<to-view-id>/Inicio.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 </faces-config>
