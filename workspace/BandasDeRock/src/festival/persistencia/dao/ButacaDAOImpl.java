@@ -17,7 +17,6 @@ public class ButacaDAOImpl extends GenericDAOImpl<Butaca, Serializable> implemen
 		try {
 			idAEncontrar = (Integer) id;
 		} catch (Exception e) {
-			// TODO Tirar mi exception de negocio
 			e.printStackTrace();
 		}
 		return super.findByID(Butaca.class, idAEncontrar);

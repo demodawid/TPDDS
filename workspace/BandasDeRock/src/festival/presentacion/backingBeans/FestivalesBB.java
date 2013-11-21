@@ -1,15 +1,28 @@
 package festival.presentacion.backingBeans;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import festival.negocio.model.Butaca;
+import festival.negocio.model.Entrada;
 import festival.negocio.model.Festival;
 import festival.negocio.model.Noche;
+import festival.persistencia.dao.ButacaDAO;
+import festival.persistencia.dao.ButacaDAOImpl;
+import festival.persistencia.dao.EntradaDAO;
+import festival.persistencia.dao.EntradaDAOImpl;
 import festival.persistencia.dao.FestivalDAO;
 import festival.persistencia.dao.FestivalDAOImpl;
 import festival.persistencia.vistas.ButacaView;
@@ -31,6 +44,23 @@ public class FestivalesBB {
 	private static final String FALLO = "fallo";
 	private Boolean esEntradaAnticipada;
 	private String mensajeDeError;
+	private Date fechaDeHoy;
+	
+	public FestivalesBB() {
+		Properties prop = new Properties();
+		try {
+			//Cargo la fecha de hoy del archivo de configuracion
+			prop.load(new FileInputStream("config.properties"));
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+			
+			this.setFechaDeHoy(sdf.parse(prop.getProperty("fechaHoy")));
+
+		} catch (Exception e) {
+			//Si falla, por defecto uso la fecha de sistema
+			this.setFechaDeHoy(new Date());
+		}
+	}
 	
 	/**
 	 * Busca todos los festivales
@@ -93,7 +123,29 @@ public class FestivalesBB {
 		return EXITO;
 	}
 	public String comprarEntrada() {
-		
+		ButacaDAO butacaDAO = new ButacaDAOImpl();
+		try {
+			//Creo la nueva entidad entrada
+			Entrada entrada = new Entrada();
+			
+			entrada.setAnticipada(this.getEsEntradaAnticipada());
+			entrada.setFechaVenta(this.getFechaDeHoy());
+			
+			if (this.getEsEntradaAnticipada()) {
+				entrada.setPrecioFinal(new BigDecimal(this.butacaSeleccionada.getPrecioConDescuento()));
+			} else {
+				entrada.setPrecioFinal(this.butacaSeleccionada.getPrecioBase());
+			}
+			
+			Butaca butaca = butacaDAO.getEntityById(idButacaSeleccionada);
+			entrada.setButaca(butaca);
+
+			EntradaDAO entradaDAO = new EntradaDAOImpl();
+			entradaDAO.save(entrada);
+			
+		} catch (Exception e) {
+			return FALLO;
+		}
 		return EXITO;
 	}
 	/**
@@ -248,6 +300,20 @@ public class FestivalesBB {
 	 */
 	public void setMensajeDeError(String mensajeDeError) {
 		this.mensajeDeError = mensajeDeError;
+	}
+
+	/**
+	 * @return the fechaDeHoy
+	 */
+	public Date getFechaDeHoy() {
+		return fechaDeHoy;
+	}
+
+	/**
+	 * @param fechaDeHoy the fechaDeHoy to set
+	 */
+	public void setFechaDeHoy(Date fechaDeHoy) {
+		this.fechaDeHoy = fechaDeHoy;
 	}
 
 	

@@ -11,7 +11,6 @@ import festival.negocio.model.Festival;
 public class FestivalDAOImpl extends GenericDAOImpl<Festival, Serializable> implements FestivalDAO {
 	@Override
 	public Festival getEntityById(Serializable id) {
-		Session session = this.getSession();
 		Integer idAEncontrar = null;
 		try {
 			idAEncontrar = (Integer) id;

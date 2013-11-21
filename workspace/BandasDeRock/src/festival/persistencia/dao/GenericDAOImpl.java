@@ -66,8 +66,10 @@ public abstract class GenericDAOImpl <T, ID extends Serializable> implements Gen
  
     public T findByID(Class clazz, Integer id) {
         Session hibernateSession = this.getSession();
+        hibernateSession.beginTransaction();
         T t = null;
         t = (T) hibernateSession.get(clazz, id);
+        hibernateSession.getTransaction().commit();
         return t;
     }
  

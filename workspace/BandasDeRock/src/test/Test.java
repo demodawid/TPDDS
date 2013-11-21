@@ -1,8 +1,19 @@
 package test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import org.hibernate.Session;
+
+
+
+
+
 
 import festival.negocio.model.Banda;
 import festival.negocio.model.Entrada;
@@ -13,7 +24,7 @@ import festival.utils.HibernateUtil;
 
 public class Test {
 	public static void main(String[] args) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+/*		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
 		
@@ -37,12 +48,20 @@ public class Test {
 			i++;
 			System.out.println("Banda numero " + i + ": " + banda.getNombre());
 		}
-	/*	
+		
 		Banda unaBandaNueva = new Banda();
 		unaBandaNueva.setNombre("Los Wawanco");
 		
-		bandaDao.save(unaBandaNueva);*/
+		bandaDao.save(unaBandaNueva);
 		
-		HibernateUtil.getSessionFactory().close();
+		HibernateUtil.getSessionFactory().close();*/
+		
+		Properties prop = new Properties();
+		try {
+			prop.load(new FileInputStream("WebContent/config.properties"));
+			System.out.println(prop.getProperty("fechaHoy"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
