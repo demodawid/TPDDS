@@ -11,6 +11,7 @@ public class ButacaView {
 	private String disponible;
 	private Integer idEntrada;
 	private Integer descuento;
+	private Integer devolucion;
 	
 	/**
 	 * Metodo que calcula el precio con descuento
@@ -109,6 +110,18 @@ public class ButacaView {
 	public void setDescuento(Integer descuento) {
 		this.descuento = descuento;
 	}
-	
+
+	/**
+	 * @return the devolucion
+	 */
+	public Integer getDevolucion() {
+		return devolucion;
+	}
+	/**
+	 * @param devolucion the devolucion to set
+	 */
+	public void setDevolucion(Integer devolucion) {
+		this.devolucion = devolucion;
+	}
 	
 }

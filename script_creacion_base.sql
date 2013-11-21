@@ -110,6 +110,7 @@ CREATE TABLE [DDS].[Noche](
 	[fecha] [datetime] NOT NULL,
 	[fecha_fin_anticipada] [datetime] NOT NULL,
 	[descuento] [int] NOT NULL,
+	[devolucion] [int] NOT NULL,
 	[hora_inicio] [time](7) NOT NULL,
  CONSTRAINT [PK_Noche] PRIMARY KEY CLUSTERED 
 (
@@ -127,26 +128,26 @@ ALTER TABLE [DDS].[Noche] CHECK CONSTRAINT [FK_Noche_Festival]
 GO
 
 
-INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, hora_inicio)
-VALUES (1, 1, '2013-20-05', '2013-18-05', 20, '20:00:00')
-INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, hora_inicio)
-VALUES (1, 2, '2013-21-05', '2013-19-05', 15, '21:00:00')
-INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, hora_inicio)
-VALUES (1, 3, '2013-22-05', '2013-20-05', 15, '21:00:00')
+INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, devolucion,  hora_inicio)
+VALUES (1, 1, '2013-20-05', '2013-18-05', 20, 60, '20:00:00')
+INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, devolucion, hora_inicio)
+VALUES (1, 2, '2013-21-05', '2013-19-05', 15, 65, '21:00:00')
+INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, devolucion, hora_inicio)
+VALUES (1, 3, '2013-22-05', '2013-20-05', 15, 70, '21:00:00')
 
-INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, hora_inicio)
-VALUES (2, 1, '2013-11-11', '2013-08-11', 15, '21:00:00')
-INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, hora_inicio)
-VALUES (2, 2, '2013-12-11', '2013-09-11', 15, '21:30:00')
-INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, hora_inicio)
-VALUES (2, 3, '2013-13-11', '2013-10-11', 20, '21:00:00')
+INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, devolucion, hora_inicio)
+VALUES (2, 1, '2013-11-11', '2013-08-11', 15, 60, '21:00:00')
+INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, devolucion, hora_inicio)
+VALUES (2, 2, '2013-12-11', '2013-09-11', 15, 75, '21:30:00')
+INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, devolucion, hora_inicio)
+VALUES (2, 3, '2013-13-11', '2013-10-11', 20, 65, '21:00:00')
 
-INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, hora_inicio)
-VALUES (3, 1, '2013-04-07', '2013-03-07', 10, '22:00:00')
-INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, hora_inicio)
-VALUES (3, 2, '2013-05-07', '2013-04-07', 10, '22:00:00')
-INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, hora_inicio)
-VALUES (3, 3, '2013-06-07', '2013-05-07', 10, '22:00:00')
+INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, devolucion, hora_inicio)
+VALUES (3, 1, '2013-04-07', '2013-03-07', 10, 60, '22:00:00')
+INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, devolucion, hora_inicio)
+VALUES (3, 2, '2013-05-07', '2013-04-07', 10, 50, '22:00:00')
+INSERT INTO DDS.Noche (id_festival, numero, fecha, fecha_fin_anticipada, descuento, devolucion, hora_inicio)
+VALUES (3, 3, '2013-06-07', '2013-05-07', 10, 55, '22:00:00')
 
 
 --------------------------------------------------NOCHE_BANDA--------------------------------------------

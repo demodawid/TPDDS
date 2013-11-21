@@ -146,7 +146,18 @@ public class FestivalesBB {
 			entrada.setAnticipada(this.getEsEntradaAnticipada());
 			entrada.setFechaVenta(this.getFechaDeHoy());
 			
+			if (this.getFechaDeHoy().after(this.getNocheSeleccionada().getFecha())) {
+				this.setMensajeDeError("Lo sentimos, esta noche ya ha pasado, seleccione una noche posterior a la fecha de hoy");
+				return ConstantesFestival.FALLO;
+			}
+			
 			if (this.getEsEntradaAnticipada()) {
+				
+				if (this.getFechaDeHoy().after(this.getNocheSeleccionada().getFechaFinAnticipada())) {
+					this.setMensajeDeError("Lo sentimos, no puede comprar una entrada luego de la fecha final");
+					return ConstantesFestival.FALLO;
+				}
+				
 				entrada.setPrecioFinal(new BigDecimal(this.butacaSeleccionada.getPrecioConDescuento()));
 			} else {
 				entrada.setPrecioFinal(this.butacaSeleccionada.getPrecioBase());
@@ -161,6 +172,7 @@ public class FestivalesBB {
 			this.setIdEntradaComprada(id);
 			
 		} catch (Exception e) {
+			this.setMensajeDeError("Error de base de datos");
 			return ConstantesFestival.FALLO;
 		}
 		return ConstantesFestival.EXITO;

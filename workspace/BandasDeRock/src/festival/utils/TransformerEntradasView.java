@@ -14,7 +14,7 @@ public class TransformerEntradasView {
 			}
 			
 			entradaView.setButaca(
-					TransformerButacasView.transformButaca(entrada.getButaca(), entrada.getButaca().getNoche().getDescuento())
+					TransformerButacasView.transformButaca(entrada.getButaca(), entrada.getButaca().getNoche().getDescuento(), entrada.getButaca().getNoche().getDevolucion())
 					);
 			entradaView.setFechaVenta(entrada.getFechaVenta());
 			entradaView.setIdEntrada(entrada.getIdEntrada());

@@ -17,7 +17,7 @@ public class TransformerNochesView {
 		List<ButacaView> butacasView = new ArrayList<ButacaView>();
 
 		for (Butaca butaca : noche.getButacas()) {
-			ButacaView butacaView = TransformerButacasView.transformButaca(butaca, noche.getDescuento());
+			ButacaView butacaView = TransformerButacasView.transformButaca(butaca, noche.getDescuento(), noche.getDevolucion());
 			butacasView.add(butacaView);
 		}
 		nocheView.setButacas(butacasView);
@@ -26,6 +26,7 @@ public class TransformerNochesView {
 		nocheView.setFecha(noche.getFecha());
 		nocheView.setFechaFinAnticipada(noche.getFechaFinAnticipada());
 		nocheView.setIdNoche(noche.getIdNoche());
+		nocheView.setDevolucion(noche.getDevolucion());
 		nocheView.setHoraInicio(noche.getHoraInicio().toString());
 		List<BandaView> bandasView = new ArrayList<BandaView>();
 		for (Banda banda : noche.getListaBandas()) {

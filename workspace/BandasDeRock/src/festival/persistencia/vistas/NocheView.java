@@ -10,6 +10,7 @@ public class NocheView {
 	private Date fechaFinAnticipada;
 	private List<BandaView> listaBandas;
 	private String descuento;
+	private Integer devolucion;
 	private String horaInicio;
 	private List<ButacaView> butacas;
 	
@@ -109,8 +110,17 @@ public class NocheView {
 	public void setButacas(List<ButacaView> butacas) {
 		this.butacas = butacas;
 	}
+	/**
+	 * @return the devolucion
+	 */
+	public Integer getDevolucion() {
+		return devolucion;
+	}
+	/**
+	 * @param devolucion the devolucion to set
+	 */
+	public void setDevolucion(Integer devolucion) {
+		this.devolucion = devolucion;
+	}
 
-	
-	
-	
 }

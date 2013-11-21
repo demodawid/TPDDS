@@ -1,5 +1,10 @@
 package festival.presentacion.backingBeans;
 
+import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Properties;
+
 import festival.negocio.model.Entrada;
 import festival.negocio.model.Festival;
 import festival.negocio.model.Noche;
@@ -14,6 +19,7 @@ import festival.utils.TransformerFestivalesView;
 import festival.utils.TransformerNochesView;
 
 public class RetornoEntradasBB {
+	private Date fechaDeHoy;
 	private String mensajeDeError;
 	private Integer idEntradaARetornar;
 	private Entrada entradaARetornarEntity;
@@ -21,6 +27,21 @@ public class RetornoEntradasBB {
 	private FestivalView festivalDeLaEntradaARetornar;
 	private NocheView nocheDeLaEntradaARetornar;
 	
+	public RetornoEntradasBB() {
+		Properties prop = new Properties();
+		try {
+			//Cargo la fecha de hoy del archivo de configuracion
+			prop.load(new FileInputStream("config.properties"));
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+			
+			this.setFechaDeHoy(sdf.parse(prop.getProperty("fechaHoy")));
+
+		} catch (Exception e) {
+			//Si falla, por defecto uso la fecha de sistema
+			this.setFechaDeHoy(new Date());
+		}
+	}
 	
 	public String verEntradaADevolver () {
 		try {
@@ -39,6 +60,20 @@ public class RetornoEntradasBB {
 			
 			this.setFestivalDeLaEntradaARetornar(TransformerFestivalesView.transformFestival(festivalEntity));
 			this.setNocheDeLaEntradaARetornar(TransformerNochesView.transformNoche(nocheEntity));
+			
+			if (this.getEntradaARetornarEntity().getAnticipada()) {
+				if (this.getFechaDeHoy().after(this.getNocheDeLaEntradaARetornar().getFechaFinAnticipada())) {
+					this.setMensajeDeError("No puede retornar una entrada anticipada luego de la fecha final");
+					return ConstantesFestival.FALLO;
+				}
+			} else {
+				if (this.getFechaDeHoy().after(this.getNocheDeLaEntradaARetornar().getFecha())) {
+					this.setMensajeDeError("No puede retornar una entrada despues de la noche");
+					return ConstantesFestival.FALLO;
+					
+				}
+			}
+			
 			
 		} catch (Exception e) {
 			this.setMensajeDeError("Error en la comunicacion con la base de datos");
@@ -149,7 +184,19 @@ public class RetornoEntradasBB {
 	public void setEntradaARetornarEntity(Entrada entradaARetornarEntity) {
 		this.entradaARetornarEntity = entradaARetornarEntity;
 	}
-	
-	
+
+	/**
+	 * @return the fechaDeHoy
+	 */
+	public Date getFechaDeHoy() {
+		return fechaDeHoy;
+	}
+
+	/**
+	 * @param fechaDeHoy the fechaDeHoy to set
+	 */
+	public void setFechaDeHoy(Date fechaDeHoy) {
+		this.fechaDeHoy = fechaDeHoy;
+	}
 	
 }

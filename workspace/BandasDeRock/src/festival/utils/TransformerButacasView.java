@@ -4,7 +4,7 @@ import festival.negocio.model.Butaca;
 import festival.persistencia.vistas.ButacaView;
 
 public class TransformerButacasView {
-	public static ButacaView transformButaca(Butaca butaca, Integer descuento){
+	public static ButacaView transformButaca(Butaca butaca, Integer descuento, Integer devolucion){
 		ButacaView butacaView = new ButacaView();
 		
 		butacaView.setIdButaca(butaca.getIdButaca());
@@ -12,6 +12,7 @@ public class TransformerButacasView {
 		butacaView.setPrecioBase(butaca.getPrecioBase());
 		butacaView.setSector(butaca.getSector());
 		butacaView.setDescuento(descuento);
+		butacaView.setDevolucion(devolucion);
 		if (butaca.getEntrada() == null) {
 			butacaView.setDisponible("Si");
 		} else {

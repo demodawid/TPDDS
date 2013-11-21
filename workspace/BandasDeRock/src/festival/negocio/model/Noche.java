@@ -68,6 +68,12 @@ public class Noche implements Serializable {
 	private Integer descuento;
 	
 	/**
+	 * El porcentaje de devolucion de dinero en caso de retorno/cancelacion
+	 */
+	@Column(name="devolucion")
+	private Integer devolucion;
+	
+	/**
 	 * Hora de inicio del festival
 	 */
 	@Column(name="hora_inicio")
@@ -220,7 +226,19 @@ public class Noche implements Serializable {
 	public void setButacas(List<Butaca> butacas) {
 		this.butacas = butacas;
 	}
-	
-	
+
+	/**
+	 * @return the devolucion
+	 */
+	public Integer getDevolucion() {
+		return devolucion;
+	}
+
+	/**
+	 * @param devolucion the devolucion to set
+	 */
+	public void setDevolucion(Integer devolucion) {
+		this.devolucion = devolucion;
+	}
 	
 }
