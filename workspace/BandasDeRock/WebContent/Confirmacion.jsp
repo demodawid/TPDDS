@@ -12,6 +12,11 @@
 </head>
 <body>
 	<h:graphicImage url="/header.jpg"/>
+	<br>
+	<h:outputText value="Fecha actual: "/>
+	<h:outputText value="#{festivalesBB.fechaDeHoy}">
+		<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+	</h:outputText>
 	<h:form>
 		<h1>Felicitaciones! Su entrada fue comprada exitosamente!</h1>
 		<h:outputText value="Su código de entrada es: #{festivalesBB.idEntradaComprada}" style="font-weight:bold; font-size: 30px"/>

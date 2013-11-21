@@ -12,6 +12,11 @@
 </head>
 <body>
 	<h:graphicImage url="/header.jpg"/>
+	<br>
+	<h:outputText value="Fecha actual: "/>
+	<h:outputText value="#{festivalesBB.fechaDeHoy}">
+		<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+	</h:outputText>
 	<h:form>
 		<h2>Seleccione la entrada que desea comprar:</h2>
 		<h:dataTable value="#{festivalesBB.nocheSeleccionada.butacas}" var="butaca" border="1">

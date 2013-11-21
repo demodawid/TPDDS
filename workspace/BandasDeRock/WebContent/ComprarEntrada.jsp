@@ -12,6 +12,11 @@
 </head>
 <body>
 	<h:graphicImage url="/header.jpg"/>
+	<br>
+	<h:outputText value="Fecha actual: "/>
+	<h:outputText value="#{festivalesBB.fechaDeHoy}">
+		<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+	</h:outputText>
 	<h:form>
 		<h2>Esta seguro de que desea comprar la siguiente entrada?</h2>
 		<h:panelGrid columns="2" border="2">
