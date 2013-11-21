@@ -24,12 +24,16 @@ public abstract class GenericDAOImpl <T, ID extends Serializable> implements Gen
  
     public void merge(T entity) {
         Session hibernateSession = this.getSession();
+        hibernateSession.beginTransaction();
         hibernateSession.merge(entity);
+        hibernateSession.getTransaction().commit();
     }
  
     public void delete(T entity) {
         Session hibernateSession = this.getSession();
+        hibernateSession.beginTransaction();
         hibernateSession.delete(entity);
+        hibernateSession.getTransaction().commit();
     }
     
     public void update (T entity) {

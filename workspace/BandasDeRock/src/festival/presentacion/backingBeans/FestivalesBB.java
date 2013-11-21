@@ -66,6 +66,18 @@ public class FestivalesBB {
 	 * Busca todos los festivales
 	 */
 	public String buscarFestivales(){
+		this.setButacaSeleccionada(null);
+		this.setEsEntradaAnticipada(null);
+		this.setFestivales(null);
+		this.setFestivalesItems(null);
+		this.setFestivalSeleccionado(null);
+		this.setFestivalSeleccionadoItem(null);
+		this.setIdButacaSeleccionada(null);
+		this.setIdEntradaComprada(null);
+		this.setMensajeDeError(null);
+		this.setNocheSeleccionada(null);
+		this.setNocheSeleccionadaItem(null);
+		this.setNochesItems(null);
 		try {
 			FestivalDAO festivalDAO = new FestivalDAOImpl();
 			this.setFestivales(festivalDAO.getList());
@@ -80,6 +92,7 @@ public class FestivalesBB {
 			this.setFestivalesItems(items);
 			
 		} catch (Exception e) {
+			this.setMensajeDeError("Error de base de datos");
 			return ConstantesFestival.FALLO;
 		}
 		return ConstantesFestival.EXITO;
@@ -91,6 +104,7 @@ public class FestivalesBB {
 		for (Festival festival : this.getFestivales()) {
 			if (festival.getIdFestival().equals(this.getFestivalSeleccionadoItem())) {
 				this.setFestivalSeleccionado(TransformerFestivalesView.transformFestival(festival));
+				break;
 			}
 		}
 		
@@ -108,6 +122,7 @@ public class FestivalesBB {
 		for (NocheView nocheView : this.getFestivalSeleccionado().getNoches()) {
 			if (this.getNocheSeleccionadaItem().equals(nocheView.getIdNoche())) {
 				this.setNocheSeleccionada(nocheView);
+				break;
 			}
 		}
 		return ConstantesFestival.EXITO;
@@ -117,6 +132,7 @@ public class FestivalesBB {
 		for (ButacaView butacaView: this.getNocheSeleccionada().getButacas()) {
 			if (butacaView.getIdButaca().equals(this.getIdButacaSeleccionada())) {
 				this.setButacaSeleccionada(butacaView);
+				break;
 			}
 		}
 		return ConstantesFestival.EXITO;

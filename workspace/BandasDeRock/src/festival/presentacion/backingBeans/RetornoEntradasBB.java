@@ -16,6 +16,7 @@ import festival.utils.TransformerNochesView;
 public class RetornoEntradasBB {
 	private String mensajeDeError;
 	private Integer idEntradaARetornar;
+	private Entrada entradaARetornarEntity;
 	private EntradaView entradaARetornar;
 	private FestivalView festivalDeLaEntradaARetornar;
 	private NocheView nocheDeLaEntradaARetornar;
@@ -25,17 +26,20 @@ public class RetornoEntradasBB {
 		try {
 			EntradaDAO entradaDAO = new EntradaDAOImpl();
 			Entrada entradaEntity = entradaDAO.getEntityById(this.getIdEntradaARetornar());
+			this.setEntradaARetornarEntity(entradaEntity);
 			this.setEntradaARetornar(TransformerEntradasView.transormEntrada(entradaEntity));
+			
+			if (this.getEntradaARetornar() == null) {
+				this.setMensajeDeError("La entrada es inexistente");
+				return ConstantesFestival.FALLO;
+			}
 			
 			Noche nocheEntity = entradaEntity.getButaca().getNoche();
 			Festival festivalEntity = entradaEntity.getButaca().getNoche().getFestival();
 			
 			this.setFestivalDeLaEntradaARetornar(TransformerFestivalesView.transformFestival(festivalEntity));
 			this.setNocheDeLaEntradaARetornar(TransformerNochesView.transformNoche(nocheEntity));
-			if (this.getEntradaARetornar() == null) {
-				this.setMensajeDeError("La entrada es inexistente");
-				return ConstantesFestival.FALLO;
-			}
+			
 		} catch (Exception e) {
 			this.setMensajeDeError("Error en la comunicacion con la base de datos");
 			return ConstantesFestival.FALLO;
@@ -44,8 +48,14 @@ public class RetornoEntradasBB {
 	}
 	
 	public String retornarEntrada() {
-		
-		return null;
+		try {
+			EntradaDAO entradaDAO = new EntradaDAOImpl();
+			entradaDAO.delete(this.getEntradaARetornarEntity());
+		} catch (Exception e) {
+			this.setMensajeDeError("Error interno en la base de datos");
+			return ConstantesFestival.FALLO;
+		}
+		return ConstantesFestival.EXITO;
 	}
 	
 	public String iniciarRetornoEntrada(){
@@ -125,6 +135,21 @@ public class RetornoEntradasBB {
 	public void setNocheDeLaEntradaARetornar(NocheView nocheDeLaEntradaARetornar) {
 		this.nocheDeLaEntradaARetornar = nocheDeLaEntradaARetornar;
 	}
+
+	/**
+	 * @return the entradaARetornarEntity
+	 */
+	public Entrada getEntradaARetornarEntity() {
+		return entradaARetornarEntity;
+	}
+
+	/**
+	 * @param entradaARetornarEntity the entradaARetornarEntity to set
+	 */
+	public void setEntradaARetornarEntity(Entrada entradaARetornarEntity) {
+		this.entradaARetornarEntity = entradaARetornarEntity;
+	}
+	
 	
 	
 }

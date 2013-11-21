@@ -47,7 +47,7 @@
 				<h:outputText value="#{retornoEntradasBB.entradaARetornar.precioFinal}"/>
 	
 		</h:panelGrid>
-		
+		<h:commandButton value="Retornar Entrada" action="#{retornoEntradasBB.retornarEntrada}"/>
 	</h:form>
 </body>
 </f:view>

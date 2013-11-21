@@ -131,11 +131,34 @@
 	</navigation-rule>
 	
 	<navigation-rule>
+		<from-view-id>/VerEntradaRetorno.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>volverPrincipal</from-outcome>
+			<to-view-id>/Inicio.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fallo</from-outcome>
+			<to-view-id>/ErrorRetorno.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/ExitoRetorno.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	
+	<navigation-rule>
 		<from-view-id>/ErrorRetorno.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>volverPrincipal</from-outcome>
 			<to-view-id>/Inicio.jsp</to-view-id>
 		</navigation-case>
-	</navigation-rule>	
+	</navigation-rule>
 	
+	<navigation-rule>
+		<from-view-id>/RetornoDeEntrada.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/VerEntradaRetorno.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
