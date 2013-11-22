@@ -527,7 +527,7 @@ INSERT INTO DDS.Entrada(id_butaca, anticipada, precio_final, fecha_venta)
 
 INSERT INTO DDS.Entrada(id_butaca, anticipada, precio_final, fecha_venta)
 (
-	SELECT but.id_butaca, 1, but.precio - ( (but.precio * noc.descuento) / 100 ) as precio_final, noc.fecha_fin_anticipada
+	SELECT but.id_butaca, 0, but.precio - ( (but.precio * noc.descuento) / 100 ) as precio_final, noc.fecha_fin_anticipada
 	FROM DDS.Butaca but
 	INNER JOIN DDS.Noche noc
 		ON noc.id_noche = but.id_noche
