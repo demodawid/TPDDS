@@ -1,6 +1,7 @@
 package festival.presentacion.backingBeans;
 
 import java.io.FileInputStream;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -26,6 +27,8 @@ public class RetornoEntradasBB {
 	private EntradaView entradaARetornar;
 	private FestivalView festivalDeLaEntradaARetornar;
 	private NocheView nocheDeLaEntradaARetornar;
+	private BigDecimal cantidadADevolver;
+	private BigDecimal precioOriginalPagado;
 	
 	public RetornoEntradasBB() {
 		Properties prop = new Properties();
@@ -60,21 +63,6 @@ public class RetornoEntradasBB {
 			
 			this.setFestivalDeLaEntradaARetornar(TransformerFestivalesView.transformFestival(festivalEntity));
 			this.setNocheDeLaEntradaARetornar(TransformerNochesView.transformNoche(nocheEntity));
-			
-			if (this.getEntradaARetornarEntity().getAnticipada()) {
-				if (this.getFechaDeHoy().after(this.getNocheDeLaEntradaARetornar().getFechaFinAnticipada())) {
-					this.setMensajeDeError("No puede retornar una entrada anticipada luego de la fecha final");
-					return ConstantesFestival.FALLO;
-				}
-			} else {
-				if (this.getFechaDeHoy().after(this.getNocheDeLaEntradaARetornar().getFecha())) {
-					this.setMensajeDeError("No puede retornar una entrada despues de la noche");
-					return ConstantesFestival.FALLO;
-					
-				}
-			}
-			
-			
 		} catch (Exception e) {
 			this.setMensajeDeError("Error en la comunicacion con la base de datos");
 			return ConstantesFestival.FALLO;
@@ -83,6 +71,27 @@ public class RetornoEntradasBB {
 	}
 	
 	public String retornarEntrada() {
+		
+		BigDecimal retornoDinero;
+		
+		if (this.getEntradaARetornarEntity().getAnticipada()) {
+			if (this.getFechaDeHoy().after(this.getNocheDeLaEntradaARetornar().getFechaFinAnticipada())) {
+				this.setMensajeDeError("No puede retornar una entrada anticipada luego de la fecha final");
+				return ConstantesFestival.FALLO;
+			}
+		} else {
+			if (this.getFechaDeHoy().after(this.getNocheDeLaEntradaARetornar().getFecha())) {
+				this.setMensajeDeError("No puede retornar una entrada despues de la noche");
+				return ConstantesFestival.FALLO;	
+			}
+		}
+		
+		retornoDinero = this.getEntradaARetornarEntity().getPrecioFinal()
+				.multiply(BigDecimal.valueOf(this.getEntradaARetornarEntity().getButaca().getNoche().getDevolucion()))
+				.divide(new BigDecimal(100));
+		
+		this.setPrecioOriginalPagado(new BigDecimal(this.getEntradaARetornar().getPrecioFinal()));
+		
 		try {
 			EntradaDAO entradaDAO = new EntradaDAOImpl();
 			entradaDAO.delete(this.getEntradaARetornarEntity());
@@ -90,6 +99,9 @@ public class RetornoEntradasBB {
 			this.setMensajeDeError("Error interno en la base de datos");
 			return ConstantesFestival.FALLO;
 		}
+
+		this.setCantidadADevolver(retornoDinero);
+		
 		return ConstantesFestival.EXITO;
 	}
 	
@@ -197,6 +209,34 @@ public class RetornoEntradasBB {
 	 */
 	public void setFechaDeHoy(Date fechaDeHoy) {
 		this.fechaDeHoy = fechaDeHoy;
+	}
+
+	/**
+	 * @return the cantidadADevolver
+	 */
+	public BigDecimal getCantidadADevolver() {
+		return cantidadADevolver;
+	}
+
+	/**
+	 * @param cantidadADevolver the cantidadADevolver to set
+	 */
+	public void setCantidadADevolver(BigDecimal cantidadADevolver) {
+		this.cantidadADevolver = cantidadADevolver;
+	}
+
+	/**
+	 * @return the precioOriginalPagado
+	 */
+	public BigDecimal getPrecioOriginalPagado() {
+		return precioOriginalPagado;
+	}
+
+	/**
+	 * @param precioOriginalPagado the precioOriginalPagado to set
+	 */
+	public void setPrecioOriginalPagado(BigDecimal precioOriginalPagado) {
+		this.precioOriginalPagado = precioOriginalPagado;
 	}
 	
 }
