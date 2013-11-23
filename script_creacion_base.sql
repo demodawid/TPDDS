@@ -497,7 +497,7 @@ GO
 
 CREATE TABLE [DDS].[Entrada](
 	[id_entrada] [int] IDENTITY(1,1) NOT NULL,
-	[id_butaca] [int] NOT NULL,
+	[id_butaca] [int] NOT NULL UNIQUE,
 	[anticipada] [bit] NOT NULL,
 	[precio_final] [numeric](18, 2) NOT NULL,
 	[fecha_venta] [datetime] NOT NULL,
