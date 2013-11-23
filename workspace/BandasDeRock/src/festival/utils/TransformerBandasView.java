@@ -1,7 +1,7 @@
 package festival.utils;
 
 import festival.negocio.model.Banda;
-import festival.persistencia.vistas.BandaView;
+import festival.presentacion.vistas.BandaView;
 
 public class TransformerBandasView {
 	public static BandaView transformBanda(Banda banda){

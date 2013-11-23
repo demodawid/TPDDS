@@ -4,17 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
-
-import org.hibernate.Session;
-
 import festival.negocio.model.Banda;
 
 public class BandaDaoImpl extends GenericDAOImpl<Banda, Serializable> implements BandaDao{
 
 	@Override
 	public Banda getEntityById(Serializable id) {
-		Session session = this.getSession();
 		Integer idAEncontrar = null;
 		try {
 			idAEncontrar = (Integer) id;

@@ -1,4 +1,4 @@
-package festival.persistencia.vistas;
+package festival.presentacion.vistas;
 
 import java.util.Date;
 

@@ -5,8 +5,8 @@ import java.util.List;
 
 import festival.negocio.model.Festival;
 import festival.negocio.model.Noche;
-import festival.persistencia.vistas.FestivalView;
-import festival.persistencia.vistas.NocheView;
+import festival.presentacion.vistas.FestivalView;
+import festival.presentacion.vistas.NocheView;
 
 public class TransformerFestivalesView {
 	public static FestivalView transformFestival(Festival festival){

@@ -1,25 +1,8 @@
 package test;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOError;
 import java.io.IOException;
-import java.util.List;
 import java.util.Properties;
-
-import org.hibernate.Session;
-
-
-
-
-
-
-import festival.negocio.model.Banda;
-import festival.negocio.model.Entrada;
-import festival.persistencia.dao.BandaDao;
-import festival.persistencia.dao.BandaDaoImpl;
-import festival.utils.HibernateUtil;
 
 
 public class Test {

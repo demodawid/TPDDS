@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.Session;
-
 import festival.negocio.model.Festival;
 
 public class FestivalDAOImpl extends GenericDAOImpl<Festival, Serializable> implements FestivalDAO {

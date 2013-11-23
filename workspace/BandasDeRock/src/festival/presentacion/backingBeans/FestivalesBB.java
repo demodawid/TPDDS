@@ -1,33 +1,27 @@
 package festival.presentacion.backingBeans;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import festival.negocio.model.Butaca;
 import festival.negocio.model.Entrada;
 import festival.negocio.model.Festival;
-import festival.negocio.model.Noche;
 import festival.persistencia.dao.ButacaDAO;
 import festival.persistencia.dao.ButacaDAOImpl;
 import festival.persistencia.dao.EntradaDAO;
 import festival.persistencia.dao.EntradaDAOImpl;
 import festival.persistencia.dao.FestivalDAO;
 import festival.persistencia.dao.FestivalDAOImpl;
-import festival.persistencia.vistas.ButacaView;
-import festival.persistencia.vistas.FestivalView;
-import festival.persistencia.vistas.NocheView;
+import festival.presentacion.vistas.ButacaView;
+import festival.presentacion.vistas.FestivalView;
+import festival.presentacion.vistas.NocheView;
 import festival.utils.ConstantesFestival;
 import festival.utils.TransformerFestivalesView;
 

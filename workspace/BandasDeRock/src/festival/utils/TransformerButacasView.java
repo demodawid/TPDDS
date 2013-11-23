@@ -1,7 +1,7 @@
 package festival.utils;
 
 import festival.negocio.model.Butaca;
-import festival.persistencia.vistas.ButacaView;
+import festival.presentacion.vistas.ButacaView;
 
 public class TransformerButacasView {
 	public static ButacaView transformButaca(Butaca butaca, Integer descuento, Integer devolucion){

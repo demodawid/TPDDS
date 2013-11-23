@@ -1,4 +1,4 @@
-package festival.persistencia.vistas;
+package festival.presentacion.vistas;
 
 public class BandaView {
 	private Integer idBanda;

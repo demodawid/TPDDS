@@ -1,7 +1,7 @@
 package festival.utils;
 
 import festival.negocio.model.Entrada;
-import festival.persistencia.vistas.EntradaView;
+import festival.presentacion.vistas.EntradaView;
 
 public class TransformerEntradasView {
 	public static EntradaView transormEntrada(Entrada entrada){

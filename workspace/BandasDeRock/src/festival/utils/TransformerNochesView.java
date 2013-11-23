@@ -6,9 +6,9 @@ import java.util.List;
 import festival.negocio.model.Banda;
 import festival.negocio.model.Butaca;
 import festival.negocio.model.Noche;
-import festival.persistencia.vistas.BandaView;
-import festival.persistencia.vistas.ButacaView;
-import festival.persistencia.vistas.NocheView;
+import festival.presentacion.vistas.BandaView;
+import festival.presentacion.vistas.ButacaView;
+import festival.presentacion.vistas.NocheView;
 
 public class TransformerNochesView {
 	public static NocheView transformNoche(Noche noche){
